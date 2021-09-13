@@ -125,8 +125,6 @@ icons.forEach((icon) => {
     domName.classList.add("name");
     domName.innerHTML = name;
 
-    console.log(domIcon);
-
     domInnerCard.appendChild(domIcon);
     domInnerCard.appendChild(domName);
     domCard.appendChild(domInnerCard);
