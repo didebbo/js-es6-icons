@@ -112,6 +112,12 @@ const icons = [
     },
 ];
 
+const color = {
+    food: "green",
+    animal: "red",
+    beverage: "orange"
+}
+
 icons.forEach((icon) => {
     const { name, family, prefix, category } = icon;
     const domCard = document.createElement("div");
@@ -121,6 +127,7 @@ icons.forEach((icon) => {
     const domIcon = document.createElement("i");
     domIcon.classList.add(family);
     domIcon.classList.add(`${prefix}${name}`);
+    domIcon.style.color = color[category];
     const domName = document.createElement("div");
     domName.classList.add("name");
     domName.innerHTML = name;
