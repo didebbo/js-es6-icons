@@ -210,6 +210,10 @@ addNewIconOk.addEventListener("click", () => {
         color: colors[newInconCategory.value]
     }
     colorIcons.push(newIcon);
+    newInconName.value = "";
+    newInconFamily.value = "";
+    newInconPrefix.value = "";
+    newInconCategory.value = "";
     filterIcons();
     modalPanel.classList.remove("show");
 });
