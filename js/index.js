@@ -1,6 +1,10 @@
 // DOM
 const domCards = document.getElementById("domCards");
 const domCategory = document.getElementById("category");
+const addNewIcon = document.getElementById("addNewIcon");
+const modalPanel = document.getElementById("modalPanel");
+const closeModalNewIcon = document.getElementById("closeModalNewIcon");
+const addNewIconOk = document.getElementById("addNewIconOk");
 
 // Original Icons
 const icons = [
@@ -177,6 +181,19 @@ domCategory.addEventListener("change", () => {
         return false;
     });
     displayIcons(categoryIcons, domCards);
+});
+
+// Show Modal Menu
+addNewIcon.addEventListener("click", () => {
+    modalPanel.classList.add("show");
+});
+
+closeModalNewIcon.addEventListener("click", () => {
+    modalPanel.classList.remove("show");
+});
+
+addNewIconOk.addEventListener("click", () => {
+    modalPanel.classList.remove("show");
 });
 
 // Debug Logs

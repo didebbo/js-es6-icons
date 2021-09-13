@@ -36,6 +36,9 @@
             <select id="category">
                 <option value="all">Tutti</option>
             </select>
+            <button id="addNewIcon">
+                Add New Icon
+            </button>
         </div>
     </header>
 
@@ -49,6 +52,32 @@
             </div> -->
         </div>
     </main>
+
+    <!-- Input Panel -->
+    <div id="modalPanel" class="modalPanel">
+        <button id="closeModalNewIcon">
+            X
+        </button>
+        <label for="newInconName">
+            <p>Name:</p>
+            <input type="text" name="newInconName" id="newInconName" placeholder="Name...">
+        </label>
+        <label for="newInconFamily">
+            <p>Family:</p>
+            <input type="text" name="newInconFamily" id="newInconFamily" placeholder="Family...">
+        </label>
+        <label for="newInconPrefix">
+            <p>Prefix:</p>
+            <input type="text" name="newInconPrefix" id="newInconPrefix" placeholder="Prefix...">
+        </label>
+        <label for="newInconCategory">
+            <p>Category:</p>
+            <input type="text" name="newInconCategory" id="newInconPrefix" placeholder="Category...">
+        </label>
+        <button id="addNewIconOk">
+            Add
+        </button>
+    </div>
 
     <script src="js/index.js"></script>
 </body>
