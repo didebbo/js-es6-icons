@@ -176,15 +176,19 @@ const displayIcons = (icons, domCards) => {
     });
 }
 
-// Display Icons
-displayIcons(colorIcons, domCards);
-
-domCategory.addEventListener("change", () => {
+const filterIcons = () => {
     const categoryIcons = colorIcons.filter((icon) => {
         if (domCategory.value === "all" || icon["category"] === domCategory.value) return true;
         return false;
     });
     displayIcons(categoryIcons, domCards);
+}
+
+// Display Icons
+displayIcons(colorIcons, domCards);
+
+domCategory.addEventListener("change", () => {
+    filterIcons();
 });
 
 // Show Modal Menu
@@ -197,12 +201,16 @@ closeModalNewIcon.addEventListener("click", () => {
 });
 
 addNewIconOk.addEventListener("click", () => {
-    colorIcons.push({
+
+    const newIcon = {
         name: newInconName.value,
         family: newInconFamily.value,
-        prefix: newInconPrefix.value,
-        category: newInconCategory.value
-    });
+        prefix: newInconPrefix.value + "-",
+        category: newInconCategory.value,
+        color: colors[newInconCategory.value]
+    }
+    colorIcons.push(newIcon);
+    filterIcons();
     modalPanel.classList.remove("show");
 });
 
