@@ -5,6 +5,10 @@ const addNewIcon = document.getElementById("addNewIcon");
 const modalPanel = document.getElementById("modalPanel");
 const closeModalNewIcon = document.getElementById("closeModalNewIcon");
 const addNewIconOk = document.getElementById("addNewIconOk");
+const newInconName = document.getElementById("newInconName");
+const newInconFamily = document.getElementById("newInconFamily");
+const newInconPrefix = document.getElementById("newInconPrefix");
+const newInconCategory = document.getElementById("newInconCategory");
 
 // Original Icons
 const icons = [
@@ -193,6 +197,12 @@ closeModalNewIcon.addEventListener("click", () => {
 });
 
 addNewIconOk.addEventListener("click", () => {
+    colorIcons.push({
+        name: newInconName.value,
+        family: newInconFamily.value,
+        prefix: newInconPrefix.value,
+        category: newInconCategory.value
+    });
     modalPanel.classList.remove("show");
 });
 
