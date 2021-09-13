@@ -2,6 +2,7 @@
 const domCards = document.getElementById("domCards");
 const domCategory = document.getElementById("category");
 
+// Original Icons
 const icons = [
     {
         name: 'apple-alt',
@@ -113,12 +114,14 @@ const icons = [
     },
 ];
 
+// Colors
 const colors = {
     food: "green",
     animal: "red",
     beverage: "orange"
 }
 
+// Colored Icons
 const colorIcons = icons.map((icon) => {
     const { category } = icon;
     return {
@@ -127,12 +130,13 @@ const colorIcons = icons.map((icon) => {
     }
 });
 
+// Categories
 const categoryIcons = [];
-
 colorIcons.forEach((icon) => {
     if (!categoryIcons.includes(icon["category"])) categoryIcons.push(icon["category"]);
 });
 
+// Display categories
 categoryIcons.forEach((category) => {
     const option = document.createElement("option");
     option.value = category;
@@ -140,7 +144,9 @@ categoryIcons.forEach((category) => {
     domCategory.appendChild(option);
 });
 
+// Display Icons
 const displayIcons = (icons, domCards) => {
+    domCards.innerHTML = "";
     icons.forEach((icon) => {
         const { name, family, prefix, color } = icon;
         const domCard = document.createElement("div");
@@ -165,7 +171,15 @@ const displayIcons = (icons, domCards) => {
 // Display Icons
 displayIcons(colorIcons, domCards);
 
+domCategory.addEventListener("change", () => {
+    const categoryIcons = colorIcons.filter((icon) => {
+        if (domCategory.value === "all" || icon["category"] === domCategory.value) return true;
+        return false;
+    });
+    displayIcons(categoryIcons, domCards);
+});
+
 // Debug Logs
-console.log(icons);
-console.log(colorIcons);
-console.log(categoryIcons);
+// console.log(icons);
+// console.log(colorIcons);
+// console.log(categoryIcons);
