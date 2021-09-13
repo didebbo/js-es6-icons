@@ -38,6 +38,10 @@ body {
                 margin: 0 0.2em;
                 cursor: pointer;
             }
+
+            select {
+                text-transform: capitalize;
+            }
         }
     }
 

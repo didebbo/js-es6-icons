@@ -1,5 +1,6 @@
 // DOM
 const domCards = document.getElementById("domCards");
+const domCategory = document.getElementById("category");
 
 const icons = [
     {
@@ -112,28 +113,59 @@ const icons = [
     },
 ];
 
-const color = {
+const colors = {
     food: "green",
     animal: "red",
     beverage: "orange"
 }
 
-icons.forEach((icon) => {
-    const { name, family, prefix, category } = icon;
-    const domCard = document.createElement("div");
-    domCard.classList.add("card");
-    const domInnerCard = document.createElement("div");
-    domInnerCard.classList.add("innercard");
-    const domIcon = document.createElement("i");
-    domIcon.classList.add(family);
-    domIcon.classList.add(`${prefix}${name}`);
-    domIcon.style.color = color[category];
-    const domName = document.createElement("div");
-    domName.classList.add("name");
-    domName.innerHTML = name;
-
-    domInnerCard.appendChild(domIcon);
-    domInnerCard.appendChild(domName);
-    domCard.appendChild(domInnerCard);
-    domCards.appendChild(domCard);
+const colorIcons = icons.map((icon) => {
+    const { category } = icon;
+    return {
+        ...icon,
+        color: colors[category]
+    }
 });
+
+const categoryIcons = [];
+
+colorIcons.forEach((icon) => {
+    if (!categoryIcons.includes(icon["category"])) categoryIcons.push(icon["category"]);
+});
+
+categoryIcons.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.innerHTML = category;
+    domCategory.appendChild(option);
+});
+
+const displayIcons = (icons, domCards) => {
+    icons.forEach((icon) => {
+        const { name, family, prefix, color } = icon;
+        const domCard = document.createElement("div");
+        domCard.classList.add("card");
+        const domInnerCard = document.createElement("div");
+        domInnerCard.classList.add("innercard");
+        const domIcon = document.createElement("i");
+        domIcon.classList.add(family);
+        domIcon.classList.add(`${prefix}${name}`);
+        domIcon.style.color = color;
+        const domName = document.createElement("div");
+        domName.classList.add("name");
+        domName.innerHTML = name;
+
+        domInnerCard.appendChild(domIcon);
+        domInnerCard.appendChild(domName);
+        domCard.appendChild(domInnerCard);
+        domCards.appendChild(domCard);
+    });
+}
+
+// Display Icons
+displayIcons(colorIcons, domCards);
+
+// Debug Logs
+console.log(icons);
+console.log(colorIcons);
+console.log(categoryIcons);
